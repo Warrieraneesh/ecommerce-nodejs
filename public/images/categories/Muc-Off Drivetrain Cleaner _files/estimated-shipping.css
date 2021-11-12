@@ -1,0 +1,160 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24-Mar-2018, 11:01:40
+    Author     : Abuu
+*/
+
+.product-estimated-shipping-detail {
+    position: relative;
+}
+
+.ot-estimated-shipping [class$="shipping-privacy"] {
+    position: relative;
+    font-size: 0.8em;
+}
+
+.ot-estimated-shipping [class$="shipping-privacy"] p {
+    display: inline-block;
+}
+
+.ot-estimated-shipping [class$="shipping-privacy"] .shipping-privacy-href {
+    color: #ab47bc;
+}
+
+.ot-estimated-shipping [class$="shipping-privacy"] .shipping-privacy-href::after {
+    content: none;
+}
+
+.ot-estimated-shipping [class$="shipping-privacy-more"] {
+    display: inline-block;
+    text-align: center;
+    border-radius: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.ot-estimated-shipping [class$="shipping-privacy-more"] i.fa {
+    color: #909399;
+    padding-left: 2px;
+    font-size: 10px;
+}
+
+.ot-estimated-shipping [class$="shipping-privacy-more-popup"] {
+    display: none;
+    position: absolute;
+    left: 20px;
+    top: 0px;
+    color: #606266;
+    min-width: 200px;
+    background: #fff;
+    text-align: left;
+    padding: 8px 8px;
+    z-index: 1;
+    border: 1px solid #c0c4cc;
+    border-radius: 2px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.01);
+}
+
+.ot-estimated-shipping [class$="shipping-privacy-more-popup"]::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 0;
+    margin-left: -10px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #c0c4cc transparent transparent;
+}
+
+.success {
+    color: #00c851 !important;
+}
+
+.alert {
+    color: #ffbb33 !important;
+}
+
+.ot-estimated-shipping .flag-icon {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    width: 1.33333333em;
+    line-height: 1em;
+}
+
+.ot-estimated-shipping .flag-icon.flag-icon-squared {
+    width: 1em;
+}
+
+.ot-estimated-shipping .flag-icon:before {
+    content: "\00a0";
+}
+.ot-estimated-shipping-item-shipping-method {
+    margin-bottom: 10px;
+    box-shadow: rgb(99 99 99 / 13%) 0px 2px 8px 0px;
+    border-radius: 10px;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+.ot-estimated-shipping-item-shipping-method > label {
+    color: black;
+    position: absolute;
+    margin-top: 25px;
+}
+.ot-estimated-shipping-item-shipping-method > div {
+    margin-left: 33px;
+    color: black;
+}
+.ot-estimated-shipping-item-shipping-method > input {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-top: 1.7%;
+    
+}
+.ot-estimated-shipping-item-shipping-method > input[type="radio"] {
+    visibility: hidden;
+}
+.ot-estimated-shipping-item-shipping-method:hover {
+    cursor: pointer;
+    -ms-transform: scale(1.02); /* IE 9 */
+    -webkit-transform: scale(1.02); /* Safari 3-8 */
+    transform: scale(1.02);
+    box-shadow: rgb(99 99 99 / 55%) 0px 2px 8px 0px;
+}
+.ot-estimated-shipping-title-shipping {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.ot-estimated-shipping-item-radio {
+    display: none;
+}
+/* simulate radiobutton appearance using pseudoselector */
+.ot-estimated-shipping-item-radio + label:before {
+    content: "";
+    /* create custom radiobutton appearance */
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    padding: 3px;
+    margin-right: 5px;
+    background-clip: content-box;
+    border: 1px solid #bbbbbb;
+    background-color: #e7e6e7;
+    border-radius: 50%;
+}
+
+.ot-estimated-shipping *,
+.ot-estimated-shipping *:before,
+.ot-estimated-shipping *:after {
+    box-sizing: border-box;
+}
+
+/* optional styles for centering radiobuttons */

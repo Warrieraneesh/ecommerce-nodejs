@@ -1,22 +1,22 @@
 var express = require('express');
 var router = express.Router();
-var productModel = require('../models/product');
+var categoryModel = require('../models/category');
 
 /* GET home page. */
 
 router.get('/', async function(req, res, next) {
-  let products = await productModel.getProducts(7);   
+  let categories = await categoryModel.getCategories(4);   
   
-  let finalProducts = products.map(async p =>{
+  let finalCategories = categories.map(async c =>{
     
-    p.images = await productModel.getProductImages(p.products_id)
-    return p
+    c.images = await categoryModel.getCategoryImages(c.category_id)
+    return c
     
   }) 
-  finalProducts = await Promise.all(finalProducts);
-  //console.log(finalProducts[0].images)
+  finalCategories = await Promise.all(finalCategories);
+  //console.log(finalCategories[0].images)
  
-  res.render('index.html', { title: 'Latest Products', products: finalProducts });
+  res.render('index.html', { categories: finalCategories });
 });
 
 module.exports = router;

@@ -1,18 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
 <h1>{{title}}</h1>
-{% for c in categories %}
+{% for p in products %}
     {% if loop.index  % 3 == 0  or loop.index == 1%}
-        <div class="row" style="margin-bottom: 20px; margin-top: 20px;">
+        <div class="row" style="margin-bottom: 20px;">
     {% endif %}  
         <div class="col-md-4">
             <div class="card" style="padding:2%;">
-                <img style="width:300px; height:300px;" src="{{c.images[0].category_images_path}}" class="card-img-top" alt="...">
+                <img style="width:300px; height:300px;" src="{{p.images[0].product_images_path}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">{{c.category_title.slice(0, 25)}}...</h5>
-                <p class="card-text">
-                    {{c.category_description.slice(0, 100)}}...
-                </p>
+                <h5 class="card-title">{{p.products_title.slice(0, 25)}}...</h5>
                 <a href="#" class="btn btn-primary">Read more</a>
                 </div>
             </div>

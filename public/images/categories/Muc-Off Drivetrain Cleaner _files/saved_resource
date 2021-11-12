@@ -1,0 +1,65 @@
+var thirdwatch_init = function() {
+    var getUserId = function() {
+        try {
+            if (window.Shopify.checkout.customer_id){
+                return window.Shopify.checkout.customer_id
+            }
+        } catch (e) {}
+        try {
+            if (__st.cid){
+                return window.__st.cid
+            }
+        } catch(e) {}
+        //try {
+        //    if (window.ShopifyAnalytics.lib.user().traits().uniqToken){
+        //        return window.ShopifyAnalytics.lib.user().traits().uniqToken
+        //    }
+        //} catch(e) {}
+        return '';
+    };
+    var checkoutSessionId = function() {
+        if (window && window.Shopify && window.Shopify.checkout && window.Shopify.checkout.token) {
+            return window.Shopify.checkout.token;
+        } 
+        else {
+            return ''
+        }
+    };
+    var getCookie = function (name) {
+        let value = "; " + document.cookie;
+        let parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+    var cartSessionId = function () {
+        var cartCookie = getCookie("cart");
+        if (cartCookie) {
+            return cartCookie
+        }
+        else {
+            return ''
+        }
+    };
+
+    var sessionId = cartSessionId() || checkoutSessionId() || getCookie('receiptful-session');
+
+    var tw_element = document.createElement("thirdwatch");
+    tw_element.className = "thirdwatch-data-class";
+    tw_element.setAttribute("id", "thirdwatch");
+    tw_element.setAttribute("data-session-id-value", String(sessionId));
+    tw_element.setAttribute("data-user-id", getUserId());
+    tw_element.setAttribute("data-app-secret", "6667c2454d");
+    tw_element.setAttribute("data-is-track-pageview", "true");
+
+    document.body.insertBefore(tw_element, document.body.firstChild);
+
+};
+(function() {
+    var loadDeviceJs = function() {
+        thirdwatch_init();
+        var element = document.createElement("script");
+        element.async = 1;
+        element.src = "https://cdn.thirdwatch.ai/tw.min.js";
+        document.body.appendChild(element);
+    };
+    loadDeviceJs();
+})();
