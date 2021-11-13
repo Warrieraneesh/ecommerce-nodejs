@@ -1,5 +1,5 @@
 const promisePool = require('../config/db')
-async function getProducts(limit=7){
+async function getProducts(limit){
     const [rows, _] = await promisePool.query
     (
         `SELECT * FROM products

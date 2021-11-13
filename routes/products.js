@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 var productModel = require('../models/product');
 
-/* GET home page. */
+/* GET products page. */
 
 router.get('/', async function(req, res, next) {
-  let products = await productModel.getProducts(7);   
+  let products = await productModel.getProducts(12);   
   
   let finalProducts = products.map(async p =>{
     
