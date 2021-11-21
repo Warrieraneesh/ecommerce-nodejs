@@ -7,7 +7,6 @@ var nunjucks = require('nunjucks');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
-var productDetailsRouter = require('./routes/productDetails')
 
 var app = express();
 nunjucks.configure('views', {
@@ -29,7 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter)
-app.use('/productDetails', productDetailsRouter)
 
 
 // catch 404 and forward to error handler

@@ -14,11 +14,29 @@ router.get('/', async function(req, res, next) {
     
   }) 
   finalProducts = await Promise.all(finalProducts);
-  //console.log(finalProducts[0].images)
+  console.log(finalProducts[0].images)
  
   res.render('products/index.html', { title: 'Latest Products', products: finalProducts });
 });
 
+/* GET product Details page. */
+
+router.get('/:id', async function (req, res) {
+  console.log(req.params.id)
+  
+    let products = await productModel.getProductDetails(req.params.id);
+
+let finalProductDetails = products.map(async p => {
+  p.images = await productModel.getProductImages(p.products_id)
+  return p
+})
+finalProductDetails = await Promise.all(finalProductDetails);
+
+console.log(finalProductDetails)
+
+  res.render('products/detail.html', { title: 'Product Details', productDetails: finalProductDetails[0]});
+
+ });
 module.exports = router;
 
 

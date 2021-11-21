@@ -4,7 +4,7 @@
     {% set open_count = 0 %}
 
 {% for p in products %}
-        {% set open_count = open_count+1 %}
+        {% set open_count = open_count + 1 %}
 
     {% if open_count == 4  or loop.index == 1%}
     <!-- row open-->
@@ -12,8 +12,7 @@
         {% if loop.index != 1  %}
             {% set open_count = 1 %}
         {% endif %}
-       
-
+      
     {% endif %}  
 
      
@@ -22,13 +21,14 @@
             <div class="card" style="padding:2%;">
                 <img style="width:300px; height:300px;" src="{{p.images[0].product_images_path}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">{{loop.index}} {{p.products_title.slice(0, 25)}}...</h5>
-                <a href="#" class="btn btn-primary">Read more</a>
+                <h5 class="card-title"> {{p.products_title.slice(0, 25)}}...</h5>
+                <h6 class="card-price">{{ "Price"}} {{p.products_price}}</h6>
+                <a href="/products/{{ p.products_id }}" class="btn btn-primary">Read more</a>
                 </div>
             </div>
         </div>
         {% if loop.index  % 3 == 0 or loop.last %}
             </div><!--end of .row -->
         {% endif %} 
-{% endfor %}
+    {% endfor %}
 {% endblock %}

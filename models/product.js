@@ -18,8 +18,18 @@ const [rows, _] = await promisePool.query
     return JSON.parse(JSON.stringify(rows))
 
 }
+async function getProductDetails(products_id){
+
+    const [rows, _] = await promisePool.query
+    (
+        `SELECT * FROM products
+        WHERE products_id = ?`, [products_id])
+        return JSON.parse(JSON.stringify(rows))
+}
+
 module.exports = {
     getProducts: getProducts,
     getProductImages: getProductImages,
-    
+    getProductDetails: getProductDetails
+        
 }

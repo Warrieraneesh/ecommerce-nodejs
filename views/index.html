@@ -1,13 +1,35 @@
 {% extends "layout.html" %}
 {% block content %}
 <h1>{{title}}</h1>
-{% for c in categories %}
-    {% if loop.index  % 3 == 0  or loop.index == 1%}
+<div class="row">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+ 
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="/images/Banner/banner_aero_v2_1920x600_1536218001.jpg" alt="First slide">
+    </div>
+    
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
         <div class="row" style="margin-bottom: 20px; margin-top: 20px;">
-    {% endif %}  
-        <div class="col-md-4">
+
+{% for c in categories %}
+        <div class="col-md-3">
+        <a href="#" title="{{c.category_title.slice(0, 25)}}"> </a>
             <div class="card" style="padding:2%;">
-                <img style="width:300px; height:300px;" src="{{c.images[0].category_images_path}}" class="card-img-top" alt="...">
+                <img  src="{{c.images[0].category_images_path}}" class="rounded-circle card-img-top" alt="...">
                 <div class="card-body">
                 <h5 class="card-title">{{c.category_title.slice(0, 25)}}...</h5>
                 <p class="card-text">
@@ -17,8 +39,7 @@
                 </div>
             </div>
         </div>
-        {% if loop.index  % 2 == 0 or loop.last %}
-            </div>
-        {% endif %} 
 {% endfor %}
+            </div>
+
 {% endblock %}

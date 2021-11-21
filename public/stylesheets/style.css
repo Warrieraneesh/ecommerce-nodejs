@@ -5,5 +5,10 @@
   color:white;
 }
 .nun-link{
-  color:red !important;
-}
+  color:red !important ;
+  font-weight: 400 !important;
+  
+  }
+  .card-price{
+    font-weight: 200 !important;
+  }
