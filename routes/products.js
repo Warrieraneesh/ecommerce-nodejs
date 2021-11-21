@@ -16,7 +16,7 @@ router.get('/', async function(req, res, next) {
   finalProducts = await Promise.all(finalProducts);
   console.log(finalProducts[0].images)
  
-  res.render('products/index.html', { title: 'Latest Products', products: finalProducts });
+  res.render('products/index.html', { products: finalProducts });
 });
 
 /* GET product Details page. */
@@ -34,7 +34,7 @@ finalProductDetails = await Promise.all(finalProductDetails);
 
 console.log(finalProductDetails)
 
-  res.render('products/detail.html', { title: 'Product Details', productDetails: finalProductDetails[0]});
+  res.render('products/detail.html', { productDetails: finalProductDetails[0]});
 
  });
 module.exports = router;
