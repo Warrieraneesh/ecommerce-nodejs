@@ -21,11 +21,17 @@ const [rows, _] = await promisePool.query
 async function getProductDetails(products_id){
 
     const [rows, _] = await promisePool.query
-    (
-        `SELECT * FROM products
+    // (
+        // `SELECT * FROM products
+        // WHERE products_id = ?`, [products_id])
+        // return JSON.parse(JSON.stringify(rows))
+
+        (`SELECT * FROM products 
         INNER JOIN categories ON 
-        products.category_id = categories.category_id
-        WHERE products_id = products_id`, [products_id])
+        products.category_id = 
+        categories.category_id
+        WHERE products_id =
+        ?`,[products_id])
         return JSON.parse(JSON.stringify(rows))
 }
        

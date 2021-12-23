@@ -6,9 +6,16 @@
 }
 .nun-link{
   color:rgb(223, 247, 14) !important ;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: 400 !important;
   
   }
   .card-price{
     font-weight: 200 !important;
+  }
+
+  .butn-clr{
+    color: rgb(223, 247, 14) !important ;
+    
+    
   }
