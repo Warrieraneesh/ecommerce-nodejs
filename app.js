@@ -63,9 +63,9 @@ app.use(flash({ sessionKeyName: 'flashMessage' }));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter)
-app.use('/admin/product', adminProductRouter)
+//app.use('/admin/products', adminProductRouter)
 const adminPath = '/admin'
-app.use(adminPath + '/product', adminProductRouter);
+app.use(adminPath + '/products', adminProductRouter);
 
 
 
