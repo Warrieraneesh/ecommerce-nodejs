@@ -5,7 +5,15 @@ var productModel = require('../models/product');
 /* GET products page. */
 
 router.get('/', async function(req, res, next) {
-  let products = await productModel.getProducts(12);   
+  
+  let productCount = await productModel.getProductsCount()
+  const rowCount = 4;
+  let numPage = Math.ceil(productCount / rowCount)
+  let currentPage= req.query.page || 1;
+  const offset = (rowCount-1) * currentPage
+
+  let products = await productModel.getProducts(offset, rowCount); 
+
   
   let finalProducts = products.map(async p =>{
     
@@ -14,9 +22,10 @@ router.get('/', async function(req, res, next) {
     
   }) 
   finalProducts = await Promise.all(finalProducts);
-  console.log(finalProducts[0].images)
+  console.log("======================================", productCount)
+
  
-  res.render('products/index.html', { products: finalProducts });
+  res.render('products/index.html', { products: finalProducts, numPage: numPage, currentPage: currentPage });
 });
 
 /* GET product Details page. */
@@ -24,19 +33,19 @@ router.get('/', async function(req, res, next) {
 router.get('/:id', async function (req, res) {
   console.log(req.params.id)
   
-    let products = await productModel.getProductDetails(req.params.id);
+  let products = await productModel.getProductDetails(req.params.id);
 
-let finalProductDetails = products.map(async p => {
-  p.images = await productModel.getProductImages(p.products_id)
-  return p
-})
-finalProductDetails = await Promise.all(finalProductDetails);
+  let finalProductDetails = products.map(async p => {
+    p.images = await productModel.getProductImages(p.products_id)
+    return p
+  })
+  finalProductDetails = await Promise.all(finalProductDetails);
 
-console.log(finalProductDetails)
+  console.log(finalProductDetails)
 
   res.render('products/detail.html', { productDetails: finalProductDetails[0]});
 
- });
+});
 module.exports = router;
 
 
