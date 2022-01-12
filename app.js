@@ -23,7 +23,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 var adminProductRouter = require('./routes/admin/product');
-
+var cartRouter = require('./routes/cart');
 var app = express();
 nunjucks.configure('views', {
   autoescape: true,
@@ -57,6 +57,19 @@ app.use(
   })
 );
 
+app.use(function(req, res, next) {
+  res.locals.user = req.session.user;
+
+  console.log('req path', req.path.split('/')[1])
+  if(!req.session.user && req.path.split('/')[1] == 'admin') {
+    return res.redirect('/users/login')
+  }
+  if(req.session.user && req.path.split('/')[1] == 'admin' && req.session.user.users_role != 'admin') {
+    return res.redirect('/users/login')
+  }
+  next();
+});
+
 // apply express-flash-message middleware
 app.use(flash({ sessionKeyName: 'flashMessage' }));
 
@@ -66,6 +79,7 @@ app.use('/products', productsRouter)
 //app.use('/admin/products', adminProductRouter)
 const adminPath = '/admin'
 app.use(adminPath + '/products', adminProductRouter);
+app.use('/cart', cartRouter)
 
 
 
@@ -84,5 +98,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error.html');
 });
+
+
 
 module.exports = app;

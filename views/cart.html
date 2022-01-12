@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends "layout.html" %}
+{% block content %}
+<h1>{{title}}</h1>
+   <div class="container cart-container">
+	<div class="row">
+		<div class="col-md-12 table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+					<th scope="col">#</th>
+					<th scope="col">Thumb</th>
+					<th scope="col">Item</th>
+					<th scope="col">Quantity</th>
+					<th scope="col">Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					<form >
+						<tr>
+							<th scope="row">1</th>
+							<td><img width="100" src="http://localhost:3000/images/categories/Bikes.jpg"></td>
+							<td>Bike</td>
+							<td><input class="form-control cart-qty"  type="number" min="1"></td>
+							<td>150.00</td>
+						</tr>	
+						<tr>
+							<td colspan="5"><button class="btn float-right btn-primary nun-link">Checkout</button>
+						</tr>	
+					</form>		
+				</tbody>
+			</table>
+		</div>
+	</div>
+   </div>
+
+{% endblock %}

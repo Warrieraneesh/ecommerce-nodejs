@@ -1,68 +1,4 @@
-.current-user{
-  list-style: none;
-}
-.current-user a.current-first {
-  color:white;
-}
-.nun-link{
-  color:rgb(223, 247, 14) !important ;
-  font-family:Garamond(serif) ;
-  font-weight: 800 !important;
-  
-  }
-  .card-price{
-    font-weight: 200 !important;
-  }
-
-  .butn-clr{
-    color: rgb(124, 29, 6);
-    font-weight: 400 !important ;
-    
-    
-  }
-  .srcbtn{
-    color:rgb(223, 247, 14);
-    width: 50%;
-    padding: 15px;
-    border: 1px solid #dddddd;
-    margin-bottom: 15px;
-    box-sizing:border-box !important ;
-
-  }
-  .login-form {
-    width: 300px;
-    margin: 0 auto;
-    font-family: Tahoma, Geneva, sans-serif;
-  }
-  .login-form h1 {
-    text-align: center;
-    color: #4d4d4d;
-    font-size: 24px;
-    padding: 20px 0 20px 0;
-  }
-  .login-form input[type="password"],
-  .login-form input[type="text"] {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #dddddd;
-    margin-bottom: 15px;
-    box-sizing:border-box;
-  }
-.login-form input[type="submit"] {
-  width: 100%;
-  padding: 15px;
-  background-color: #535b63;
-  border: 0;
-  box-sizing: border-box;
-  cursor: pointer;
-  font-weight: bold;
-  color: #ffffff;
-}
-.cart-container .cart-qty {
-  width:70px;
-}
-
-  /* body{
+body{
     margin: 0;
     padding: 0;
     background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
@@ -242,4 +178,4 @@
     font-family: 'Open Sans';
     font-weight: 600;
     color: #202020;
-  } */
+  }

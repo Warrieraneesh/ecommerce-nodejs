@@ -1,15 +1,50 @@
 const promisePool = require('../config/db')
-async function getProducts(offset, row_count){
+async function getProducts(offset, row_count, search ='', cat_id=null){
+    console.log(offset, row_count, search)
+    if(cat_id === null) {
+        const [rows, _] = await promisePool.query
+        (
+            // `SELECT * FROM products
+            // ORDER BY products_id DESC LIMIT ?`, [limit])
+
+            `SELECT * FROM products
+            ORDER BY products_id DESC LIMIT  ?, ?`, [offset, row_count])
+            return JSON.parse(JSON.stringify(rows)) 
+            
+    } else {
+        const [rows, _] = await promisePool.query
+        (
+            // `SELECT * FROM products
+            // ORDER BY products_id DESC LIMIT ?`, [limit])
+
+            `SELECT * FROM products
+            WHERE category_id = ?
+            ORDER BY products_id DESC LIMIT  ?, ?`, [cat_id, offset, row_count])
+            return JSON.parse(JSON.stringify(rows)) 
+    }
+
+    // let replacement = `'%${search}%'`;
+ 
+    // const [rows, _] = await promisePool.query
+    // (
+    //     // `SELECT * FROM products
+    //     // ORDER BY products_id DESC LIMIT ?`, [limit])
+
+    //     `SELECT * FROM products 
+    //     WHERE products_title LIKE ${replacement}
+    //     ORDER BY products_id DESC LIMIT  ?, ?`, [ offset, row_count])
+
+    //return JSON.parse(JSON.stringify(rows)) 
+
+}
+async function getUsers(username, password){
+
     const [rows, _] = await promisePool.query
     (
-        // `SELECT * FROM products
-        // ORDER BY products_id DESC LIMIT ?`, [limit])
-
-        `SELECT * FROM products
-        ORDER BY products_id DESC LIMIT  ?, ?`, [offset, row_count])
-
-    return JSON.parse(JSON.stringify(rows)) 
-
+        `SELECT * FROM users 
+         WHERE users_email = ? AND users_password = ? ` , [username, password]
+    )
+    return JSON.parse(JSON.stringify(rows))
 }
 
 async function getProductImages(product_images_id){
@@ -61,12 +96,21 @@ async function createProductImages(image_path, products_id) {
     return JSON.parse(JSON.stringify(rows))  
      //return rows.map((row) => { return row  });  
 }
-async function getProductsCount(){
-    const [rows, _] = await promisePool.query
-    (
-              `SELECT COUNT(*) as productCount FROM products`, [])
+async function getProductsCount(cat_id= null){
+    if(cat_id == null) {
+        const [rows, _] = await promisePool.query
+        (
+                  `SELECT COUNT(*) as productCount FROM products`, [])
+                  return JSON.parse(JSON.stringify(rows[0].productCount)) 
+    } else {
+        const [rows, _] = await promisePool.query
+        (
+                  `SELECT COUNT(*) as productCount FROM products WHERE category_id = ?`, [cat_id])
+                  return JSON.parse(JSON.stringify(rows[0].productCount)) 
+    }
+   
 
-    return JSON.parse(JSON.stringify(rows[0].productCount)) 
+    
 
 }
 
@@ -79,6 +123,7 @@ module.exports = {
     createProduct       : createProduct,
     createProductImages : createProductImages,
     getProductsCount    : getProductsCount,
+     getUsers            : getUsers,
        
 }
 

@@ -6,7 +6,7 @@ const validator = require('../../validations/validator');
 const object = require('nunjucks/src/object');
 
 router.get('/', async function(req, res, next) {
-    const products = await productModel.getProducts(12)
+    const products = await productModel.getProducts(0, 100)
     // Get an array of flash message by passing the key to req.consumeFlash()
     const success = await req.consumeFlash('success');
     
@@ -22,7 +22,7 @@ router.get('/create', async function (req, res, next){
 });
 
 router.post("/create", async function (req, res, next){
-    console.log("hai")
+    
 
     let {title, description, price, quantity, category_id} = req.body
     title = title.trim()
