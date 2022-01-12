@@ -114,7 +114,7 @@ router.post("/create", async function (req, res, next){
     }
     await req.flash('success', 'Product created successfully');
     //res.render("admin/create.html")
-    res.redirect('/admin/products');
+    res.redirect('/admin/product');
 });
 
 
